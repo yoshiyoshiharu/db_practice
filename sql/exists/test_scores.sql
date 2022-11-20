@@ -62,7 +62,7 @@ group by
 -- 条件を複雑にする
 -- 算数が80点以上 かつ 国語が50点以上である生徒を選択
 -- 算数が80点未満 または 国語が50点未満でない生徒
-select
+select distinct
   student_id
 from
   test_scores t_1
