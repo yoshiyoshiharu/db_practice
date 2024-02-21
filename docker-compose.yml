@@ -1,12 +1,20 @@
 version: '3'
 
 services:
-  db:
+  postgres:
     image: postgres:14
-    container_name: postgres
     ports:
       - 5432:5432
     volumes:
       - ./data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=postgres
+  mysql:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: test
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
