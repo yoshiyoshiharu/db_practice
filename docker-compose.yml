@@ -13,8 +13,13 @@ services:
     image: mysql:8
     ports:
       - "3306:3306"
+    volumes:
+      - db-store:/var/lib/mysql
+      - ./logs:/var/log/mysql
     environment:
       MYSQL_ROOT_PASSWORD: mysql
       MYSQL_DATABASE: test
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
+volumes:
+  db-store:
