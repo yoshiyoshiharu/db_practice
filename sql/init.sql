@@ -31,6 +31,7 @@ CREATE TABLE test.orders
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日時'
 )
 COMMENT '注文情報を格納するテーブル';
+
 CREATE TABLE test.categories
 (
     id INT AUTO_INCREMENT PRIMARY KEY COMMENT 'カテゴリID',
@@ -51,3 +52,19 @@ CREATE TABLE test.comments
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日時'
 )
 COMMENT 'コメント情報を格納するテーブル';
+
+ALTER TABLE test.orders
+ADD CONSTRAINT fk_orders_users
+FOREIGN KEY (user_id) REFERENCES test.users(id);
+
+ALTER TABLE test.orders
+ADD CONSTRAINT fk_orders_products
+FOREIGN KEY (product_id) REFERENCES test.products(id);
+
+ALTER TABLE test.comments
+ADD CONSTRAINT fk_comments_users
+FOREIGN KEY (user_id) REFERENCES test.users(id);
+
+ALTER TABLE test.comments
+ADD CONSTRAINT fk_comments_products
+FOREIGN KEY (product_id) REFERENCES test.products(id);
